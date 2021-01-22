@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MessangerService } from '../../../services/messanger.service';
+import {Product} from '../../../models/product';
+
 
 @Component({
   selector: 'app-cart',
@@ -6,10 +9,43 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
+  cartItems = [];
+  cartTotal = 0;
+  constructor(private msg: MessangerService) {
   }
 
+
+
+  // tslint:disable-next-line:typedef
+  ngOnInit() {
+    this.msg.getMsg().subscribe((product: Product) => {
+      this.addProductToCart(product);
+    });
+  }
+
+  // tslint:disable-next-line:typedef
+  addProductToCart(product: Product){
+    let productExists = false;
+    for (let i in this.cartItems) {
+      if (this.cartItems[i].productId === product.id) {
+        this.cartItems[i].qty++;
+        productExists = true;
+        break;
+      }
+    }
+
+    if (!productExists) {
+      this.cartItems.push({
+        productId: product.id,
+        productName: product.name,
+        qty: 1,
+        price: product.price
+      });
+    }
+    this.cartTotal = 0;
+    this.cartItems.forEach(item => {
+      this.cartTotal += (item.qty * item.price);
+    });
+  }
 }
+
