@@ -13,7 +13,8 @@ export class ProductListComponent implements OnInit {
 
   // tslint:disable-next-line:typedef
   ngOnInit() {
-    this.productList = this.productService.getProducts();
+     this.productService.getProducts().subscribe((products) =>
+     this.productList = products);
   }
 
 }

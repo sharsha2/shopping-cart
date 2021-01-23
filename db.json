@@ -1,0 +1,59 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "c++ book",
+      "description": "By Bjrne",
+      "imageUrl" : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_NbTtQ9GXjanhReClnIlW-feJ_Uq7068flvJMpOZY21BDvtJgJkqdIHmyc1M_lCUYNfNrG9s&usqp=CAc",
+      "price": 299
+    },
+    {
+      "id": 2,
+      "name": "c# book",
+      "description": "By Head First",
+      "imageUrl" : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9NsTYV4fI2B2-j-I745Fe1azLUtnOQ1Eg2UQf3KgjzOWxgqOCJuUYx5yBsi4&usqp=CAc",
+      "price": 299
+    },
+    {
+      "id": 3,
+      "name": "Java book",
+      "description": "By java",
+      "imageUrl" : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtQs4St_mT7dIJxLirRPr4cJS34gChmkY4Vq0-AvSw4OOEwUajtIN4fpUdxw&usqp=CAc",
+      "price": 299
+    },
+    {
+      "id": 4,
+      "name": "Pyhton book",
+      "description": "By Python",
+      "imageUrl" : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_2fuQuRb4AmZvVEVb7MioF7WpQ9D0ypG3TGsDrKYrpMySnyIGcP7xY84FIw&usqp=CAc",
+      "price": 299
+    },
+    {
+      "id": 5,
+      "name": "Sql book",
+      "description": "By Oracle",
+      "imageUrl" : "https://prodimage.images-bn.com/pimages/9780132715898_p0_v2_s1200x630.jpg",
+      "price": 299
+    }
+  ],
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "cart": [
+
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

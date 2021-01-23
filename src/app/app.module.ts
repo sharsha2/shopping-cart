@@ -1,5 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
+// tslint:disable-next-line:import-spacing
+
+
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/shared/header/header.component';
@@ -12,6 +16,7 @@ import { CartComponent } from './components/shopping-cart/cart/cart.component';
 import {FormsModule} from '@angular/forms';
 import { CartItemComponent } from './components/shopping-cart/cart/cart-item/cart-item.component';
 import { ProductItemComponent } from './components/shopping-cart/product-list/product-item/product-item.component';
+
 
 @NgModule({
   declarations: [
@@ -28,6 +33,7 @@ import { ProductItemComponent } from './components/shopping-cart/product-list/pr
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     FormsModule
   ],
   providers: [],
