@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { MessangerService } from '../../../services/messanger.service';
 import {Product} from '../../../models/product';
+import {Observable} from 'rxjs';
+import {CartItem} from '../../../models/cart-item';
+import {cartUrl} from '../../../config/api';
+import {CartService} from '../../../services/cart.service';
 
 
 @Component({
@@ -11,37 +15,35 @@ import {Product} from '../../../models/product';
 export class CartComponent implements OnInit {
   cartItems = [];
   cartTotal = 0;
-  constructor(private msg: MessangerService) {
+  constructor(private msg: MessangerService,
+              private cartService: CartService) {
   }
 
 
 
   // tslint:disable-next-line:typedef
   ngOnInit() {
-    this.msg.getMsg().subscribe((product: Product) => {
-      this.addProductToCart(product);
-    });
+    this.handleSubscription();
+    this.loadCartItems();
   }
 
   // tslint:disable-next-line:typedef
-  addProductToCart(product: Product){
-    let productExists = false;
-    for (let i in this.cartItems) {
-      if (this.cartItems[i].productId === product.id) {
-        this.cartItems[i].qty++;
-        productExists = true;
-        break;
-      }
-    }
+  handleSubscription() {
+    this.msg.getMsg().subscribe((product: Product) => {
+      this.loadCartItems();
+    });
+  }
 
-    if (!productExists) {
-      this.cartItems.push({
-        productId: product.id,
-        productName: product.name,
-        qty: 1,
-        price: product.price
-      });
-    }
+  // @ts-ignore
+  // tslint:disable-next-line:typedef
+  loadCartItems() {
+    this.cartService.getCartItems().subscribe((items: CartItem[]) => {
+      this.cartItems = items;
+      this.calCartTotal();
+    });
+  }
+  // tslint:disable-next-line:typedef
+  calCartTotal() {
     this.cartTotal = 0;
     this.cartItems.forEach(item => {
       this.cartTotal += (item.qty * item.price);

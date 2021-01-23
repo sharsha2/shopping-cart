@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Product } from '../../../../models/product';
 import { MessangerService } from '../../../../services/messanger.service';
+import { CartService} from '../../../../services/cart.service';
 
 @Component({
   selector: 'app-product-item',
@@ -9,7 +10,8 @@ import { MessangerService } from '../../../../services/messanger.service';
 })
 export class ProductItemComponent implements OnInit {
   @Input() productItem: Product;
-  constructor(private msg: MessangerService) {
+  constructor(private msg: MessangerService,
+              private cartService: CartService) {
   }
 
   // tslint:disable-next-line:typedef
@@ -18,7 +20,8 @@ export class ProductItemComponent implements OnInit {
 
   // tslint:disable-next-line:typedef
   handleAddToCart() {
-    this.msg.sendMsg(this.productItem);
+    this.cartService.addProductToCart(this.productItem).subscribe(() => {
+      this.msg.sendMsg(this.productItem)
+    });
   }
-
 }
