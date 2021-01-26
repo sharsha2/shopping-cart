@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule} from '@angular/forms';
 // tslint:disable-next-line:import-spacing
 
 
@@ -41,6 +42,7 @@ import { PageNotFoundComponent } from './components/shared/page-not-found/page-n
     BrowserModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule
   ],
   providers: [],
