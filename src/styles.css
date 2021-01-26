@@ -29,3 +29,12 @@
   color: red;
   cursor: pointer;
 }
+
+.guest-form-card h3 {
+  text-transform: uppercase;
+  font-size: medium;
+}
+
+.guest-form-card label {
+  font-size: small;
+}
