@@ -6,10 +6,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  model: any = { };
 
   constructor() { }
 
-  ngOnInit(): void {
+  // tslint:disable-next-line:typedef
+  ngOnInit() {
   }
 
+  // tslint:disable-next-line:typedef
+  login() {
+    console.log(this.model);
+  }
 }
