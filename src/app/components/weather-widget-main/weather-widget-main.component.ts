@@ -6,9 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./weather-widget-main.component.css']
 })
 export class WeatherWidgetMainComponent implements OnInit {
+  constructor() {
+    setInterval(() => {this.today = Date.now();
+      }, 1
+    );
+  }
 
   WeatherData: any;
-  constructor() { }
+  today: number = Date.now();
 
   // tslint:disable-next-line:typedef
   ngOnInit() {
@@ -27,7 +32,6 @@ export class WeatherWidgetMainComponent implements OnInit {
       .then(data => {this.setWeatherData(data);
       });
   }
-
   // tslint:disable-next-line:typedef
   setWeatherData(data){
     this.WeatherData = data;
