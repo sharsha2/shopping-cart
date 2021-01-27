@@ -21,6 +21,8 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { AppRoutingModule} from './app-routing.module';
 import { PageNotFoundComponent } from './components/shared/page-not-found/page-not-found.component';
+import { WeatherWidgetMainComponent } from './components/weather-widget-main/weather-widget-main.component';
+
 
 @NgModule({
   declarations: [
@@ -36,7 +38,8 @@ import { PageNotFoundComponent } from './components/shared/page-not-found/page-n
     ProductItemComponent,
     LoginComponent,
     RegisterComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    WeatherWidgetMainComponent
   ],
   imports: [
     BrowserModule,
