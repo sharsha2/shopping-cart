@@ -27,7 +27,7 @@ export class WeatherWidgetMainComponent implements OnInit {
 
   // tslint:disable-next-line:typedef
   getWeatherData(){
-    fetch('https://api.openweathermap.org/data/2.5/weather?q=barrie&appid=7151aa8cc1e1453f83ba0870c7e82339')
+    fetch('https://api.openweathermap.org/data/2.5/weather?q=toronto&appid=7151aa8cc1e1453f83ba0870c7e82339')
       .then(response => response.json())
       .then(data => {this.setWeatherData(data);
       });
