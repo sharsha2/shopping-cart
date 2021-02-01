@@ -23,6 +23,7 @@ import { AppRoutingModule} from './app-routing.module';
 import { PageNotFoundComponent } from './components/shared/page-not-found/page-not-found.component';
 import { WeatherWidgetMainComponent } from './components/weather-widget-main/weather-widget-main.component';
 import { SupportComponent } from './components/support/support.component';
+import { AboutComponent } from './components/about/about.component';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import { SupportComponent } from './components/support/support.component';
     RegisterComponent,
     PageNotFoundComponent,
     WeatherWidgetMainComponent,
-    SupportComponent
+    SupportComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,

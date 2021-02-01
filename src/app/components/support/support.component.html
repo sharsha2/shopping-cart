@@ -1,0 +1,63 @@
+
+<div class="row">
+  <div class="col-md-4 offset-md-4">
+    <div class="guest-form-card card">
+      <div class="card-header text-center">
+        <h3>Support</h3>
+      </div>
+      <div class="card-body">
+        <form [formGroup]="supportForm" (ngSubmit)="support()">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input id="name"
+                   class="form-control"
+                   placeholder="Enter your Full name"
+                   [ngClass]="{'is-invalid': supportForm.get('name').touched
+                   && supportForm.get('name').invalid }"
+                   formControlName="name"/>
+            <span class="invalid-feedback">Name can't be blank</span>
+          </div>
+
+          <div class="form-group">
+            <label for="email" class="fa fa-envelope" aria-hidden="true"> Email</label>
+            <input type="email"
+                   id="email"
+                   class="form-control"
+                   placeholder="Enter Email"
+                   [ngClass]="{'is-invalid': supportForm.get('email').touched
+                   && supportForm.get('email').invalid }"
+                   formControlName="email"/>
+            <span class="invalid-feedback">
+              <span *ngIf="supportForm.get('email').hasError('required')">Email can't be blank.</span>
+              <span *ngIf="supportForm.get('email').hasError('email')">Email must be valid.</span>
+            </span>
+          </div>
+
+          <div class="form-group">
+            <label for="phone">Phone</label>
+            <input id="phone"
+                   class="form-control"
+                   placeholder="Enter your phone number"
+                   [ngClass]="{'is-invalid': supportForm.get('phone').touched
+                   && supportForm.get('phone').invalid }"
+                   formControlName="phone"/>
+            <span class="invalid-feedback">phone number can't be blank</span>
+          </div>
+          <div class="form-group">
+            <label for="file"></label>
+            <input id="file" type="file" (change)="selectFile($event)" class="form-control"
+                   placeholder="Enter your phone number"
+                   [ngClass]="{'is-invalid': supportForm.get('file').touched
+                   && supportForm.get('file').invalid }"
+            formControlName="file"/>
+            <span class="invalid-feedback">please upload a file.</span>
+          </div>
+
+
+
+          <button class="btn btn-danger btn-block" [disabled]="supportForm.invalid">Send Feedback</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
