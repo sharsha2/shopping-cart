@@ -3,7 +3,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule} from '@angular/forms';
 // tslint:disable-next-line:import-spacing
-
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireDatabaseModule} from '@angular/fire/database';
+import { AngularFirestoreModule} from '@angular/fire/firestore';
+import {environment} from '../environments/environment';
 
 
 import { AppComponent } from './app.component';
@@ -24,6 +27,7 @@ import { PageNotFoundComponent } from './components/shared/page-not-found/page-n
 import { WeatherWidgetMainComponent } from './components/weather-widget-main/weather-widget-main.component';
 import { SupportComponent } from './components/support/support.component';
 import { AboutComponent } from './components/about/about.component';
+import { UserinfoComponent } from './components/userinfo/userinfo.component';
 
 
 @NgModule({
@@ -43,14 +47,18 @@ import { AboutComponent } from './components/about/about.component';
     PageNotFoundComponent,
     WeatherWidgetMainComponent,
     SupportComponent,
-    AboutComponent
+    AboutComponent,
+    UserinfoComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule,
+    AngularFirestoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]
