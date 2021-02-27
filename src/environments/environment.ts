@@ -4,6 +4,9 @@
 
 export const environment = {
   production: false,
+  stripe: {
+    testKey: 'pk_live_51H9Dv3A6qilfavGZDwiNR7AqmmZgvPgUnyoRjE5jSXznLBx4TDBlo7OR8JR57O8f6V6JPDX5Avh7bjmKVCVHk4BO00Xyqd0t5T'
+  },
   firebase: {
     apiKey: 'AIzaSyBINBGBqGq-fXcWXeW4CYOZ3c2YRawDJ38',
     authDomain: 'fir-auth-646ad.firebaseapp.com',

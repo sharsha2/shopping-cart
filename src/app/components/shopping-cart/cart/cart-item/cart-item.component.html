@@ -2,5 +2,6 @@
   <span>{{cartItem.productName}}</span> x
   <span>{{cartItem.qty}}</span>:
   <strong>{{(cartItem.qty * cartItem.price) |currency:'$'}}</strong>
+  <td><a class="btn text-danger" (click)="onDelete(id)"><i class="fa fa-trash"></i> </a></td>
 </div>
 

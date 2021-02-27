@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row" *ngIf="!isSignedIn">
   <div class="col-md-4 offset-md-4">
     <div class="guest-form-card card">
       <div class="card-header text-center">
@@ -7,14 +7,14 @@
     <div class="card-body">
       <form #loginForm ="ngForm" (ngSubmit)=login()>
         <div class="form-group">
-          <label for="username"><strong>Username</strong></label>
-          <input id="username"
+          <label for="email"><strong>Email</strong></label>
+          <input type="email" #emailSignup
+                 id="email"
                  class="form-control"
-                 placeholder="Enter your username"
-                 [ngClass]="{ 'is-invalid': username.touched && username.invalid}"
-                 name="username" #username = "ngModel"
-                 [(ngModel)]="model.username" required/>
-          <span class="invalid-feedback">Username can't be blank</span>
+                 placeholder="Enter your password"
+                 [ngClass]="{ 'is-invalid': email.touched && email.invalid}"
+                 name="password" #email = "ngModel" [(ngModel)]="model.text" required/>
+          <span class="invalid-feedback">email can't be blank</span>
         </div>
 
         <div class="form-group">
@@ -33,13 +33,13 @@
           <label class="ml-1" for="remember"><strong>Remember me</strong></label>
         </div>
 
-        <button class="btn btn-primary btn-block" [disabled]="loginForm.invalid">Login</button>
+        <button (click)="onSignin(email.value, password.value)" class="btn btn-primary btn-block" [disabled]="loginForm.invalid">Login</button>
       </form>
     </div>
     </div>
   </div>
 </div>
-
+<app-userinfo *ngIf="isSignedIn" (isLogout)="handleLogout()"></app-userinfo>
 <p>
   <a [routerLink]="['/register']">Register</a>
 </p>

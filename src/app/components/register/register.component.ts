@@ -2,7 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup} from '@angular/forms';
 import { FormBuilder} from '@angular/forms';
 import { Validators } from '@angular/forms';
-
+import { AuthService} from '../../services/auth.service';
+import { Router} from '@angular/router';
+import { loggedIn} from '@angular/fire/auth-guard';
+import { LoginComponent} from '../login/login.component';
 
 // tslint:disable-next-line:typedef
 function passwordMatchValidator(form) {
@@ -39,15 +42,43 @@ function symbolValidator(control) {
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
+  isSignedIn: boolean;
   registerForm: FormGroup;
   fieldTextType: boolean;
+  errorMessage = ''; // validation error
+  error: {name: string, message: string} = {name: '', message: ''}; // for firebase error handling.
+  email: string;
+  password: string;
 
-  constructor(private builder: FormBuilder) { }
+  constructor(private builder: FormBuilder,
+              public authservice: AuthService,
+              private router: Router) { }
 
   // tslint:disable-next-line:typedef
-  ngOnInit() {
-    this.buildForm();
+  ngOnInit(){
+    if (localStorage.getItem('user') !== null) {
+      this.isSignedIn = true;
+    }
+    else {
+      this.isSignedIn = false;
+      this.buildForm();
+    }
   }
+  // tslint:disable-next-line:typedef
+  async onSignup(email: string, password: string){
+    await this.authservice.signup(email, password);
+    if (this.authservice.isLoggedIn) {
+      this.isSignedIn = true;
+    }
+  }
+  // tslint:disable-next-line:typedef
+  async onSignin(email: string, password: string){
+    await this.authservice.signin(email, password);
+    if (this.authservice.isLoggedIn) {
+      this.isSignedIn = true;
+    }
+  }
+  // tslint:disable-next-line:typedef
 
   // tslint:disable-next-line:typedef
   buildForm() {
@@ -61,14 +92,27 @@ export class RegisterComponent implements OnInit {
       validators: passwordMatchValidator
     });
   }
+  // tslint:disable-next-line:typedef
+  handleLogout(){
+    this.isSignedIn = false;
+
+  }
 
   // tslint:disable-next-line:typedef
   register() {
-    console.log(this.registerForm.value);
+    alert('registered');
   }
+
+  // tslint:disable-next-line:typedef
   // tslint:disable-next-line:typedef
   toggleFieldTextType() {
     this.fieldTextType = !this.fieldTextType;
+  }
+
+  // tslint:disable-next-line:typedef
+  logout() {
+    this.authservice.signOut();
+    localStorage.removeItem('user');
   }
 
 }

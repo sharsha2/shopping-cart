@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, EventEmitter, Output} from '@angular/core';
+import {AuthService} from '../../services/auth.service';
 
 @Component({
   selector: 'app-userinfo',
@@ -6,10 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./userinfo.component.css']
 })
 export class UserinfoComponent implements OnInit {
+  @Output() isLogout = new EventEmitter<void>();
 
-  constructor() { }
+  constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
   }
-
+  // tslint:disable-next-line:typedef
+  logout() {
+    this.authService.logout();
+    this.isLogout.emit();
+  }
 }

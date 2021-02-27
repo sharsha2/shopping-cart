@@ -8,6 +8,7 @@ import { AngularFireDatabaseModule} from '@angular/fire/database';
 import { AngularFirestoreModule} from '@angular/fire/firestore';
 import {environment} from '../environments/environment';
 
+import {AuthService} from './services/auth.service';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/shared/header/header.component';
@@ -56,11 +57,20 @@ import { UserinfoComponent } from './components/userinfo/userinfo.component';
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
-    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireModule.initializeApp({
+      apiKey: 'AIzaSyBINBGBqGq-fXcWXeW4CYOZ3c2YRawDJ38',
+      authDomain: 'fir-auth-646ad.firebaseapp.com',
+      projectId: 'fir-auth-646ad',
+      storageBucket: 'fir-auth-646ad.appspot.com',
+      messagingSenderId: '676433863087',
+      appId: '1:676433863087:web:abc9acf480b89bd6b48f5a',
+      measurementId: 'G-HMS0ZXKM9R'
+    }),
     AngularFireDatabaseModule,
     AngularFirestoreModule
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+declare var StripeCheckout: any;
